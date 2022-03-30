@@ -1,0 +1,3 @@
+[submodule "c-lang-bix"]
+	path = c-lang-bix
+	url = git@github.com:syntelos/c-lang-bix.git
