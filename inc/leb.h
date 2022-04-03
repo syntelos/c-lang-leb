@@ -32,11 +32,11 @@ typedef struct leb {
 /*
  * Decode from byte buffer.
  */
-leb* leb_decode(void*,size_t);
+leb* leb_decode(char*,size_t);
 /*
  * Encode to byte buffer.
  */
-off_t leb_encode(uint64_t,void*,size_t);
+off_t leb_encode(uint64_t,char*,size_t);
 /*
  * Clean and free memory.
  */

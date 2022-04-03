@@ -25,16 +25,16 @@
 #include "leb.h"
 /*
  */
-leb* leb_decode( void* source, size_t length){
+leb* leb_decode( char* source, size_t length){
     off_t count = 0;
     uint64_t value = 0;
     if (null != source && 0 < length){
-        uint8_t *sp = source;
+        char *sp = source;
         uint8_t shift = 0;
         off_t index;
         for (index = 0; index < length; index++){
             uint8_t sourceb = *sp;
-            bool_t continuation = (sourceb & 0x80);
+            bool_t continuation = ((0 != (sourceb & 0x80))?(true):(false));
             uint64_t content = (sourceb & 0x7F);
             value |= (content << shift);
             count += 1;
@@ -63,8 +63,8 @@ leb* leb_decode( void* source, size_t length){
 }
 /*
  */
-off_t leb_encode( uint64_t source, void* target, size_t length){
-    uint8_t *tp = target;
+off_t leb_encode( uint64_t source, char* target, size_t length){
+    char *tp = target;
     if (0 == source){
         *tp = 0;
 
